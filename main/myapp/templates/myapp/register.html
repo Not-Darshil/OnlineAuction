@@ -9,8 +9,8 @@
     <br>
     <form method="post" autocomplete="off">
         {% csrf_token %}
-
-        {{registerform.as_p}}
+        
+        {{UserRegistrationForm.as_p }}
         <input type="submit" value="Register" />
     </form>
     

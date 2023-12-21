@@ -130,3 +130,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 RECAPTCHA_PUBLIC_KEY = '6LcI7jgpAAAAAEmPQ8SnKFhhbwNY3BXnrERkE9DS'
 RECAPTCHA_PRIVATE_KEY = '6LcI7jgpAAAAAJLJe8SkgCaL8eMezmuYc58tQ3D8'
 SILENCED_SYSTEM_CHECKS = ['django_recaptcha.recaptcha_test_key_error']
+# Emailing settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_FROM = 'abesit.darshil@gmail.com'
+EMAIL_HOST_USER = 'abesit.darshil@gmail.com'
+EMAIL_HOST_PASSWORD = 'awyfuerzrrvghskg'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+PASSWORD_RESET_TIMEOUT = 14400
