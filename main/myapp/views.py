@@ -25,7 +25,7 @@ def register(request):
             form.save()
             return redirect ("my_login")
     
-
+    
     context={'registerform':form}
     return render(request,'myapp/register.html',context=context)
 
