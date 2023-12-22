@@ -1,182 +1,167 @@
-{% extends "myapp/base.html" %} 
+{% extends "myapp/base.html" %}
 
 {% load static %}
-{% block title %}Pricing {% endblock title %}
+{% block title %}About {% endblock title %}
 {% block head %}
 <script>
-    body{margin-top:20px;}
-.pricing-box {
-  -webkit-box-shadow: 0px 5px 30px -10px rgba(0, 0, 0, 0.1);
-          box-shadow: 0px 5px 30px -10px rgba(0, 0, 0, 0.1);
-  padding: 35px 50px;
-  border-radius: 20px;
-  position: relative;
-}
+    .container,
+.container - fluid,
+.container - xxl,
+.container - xl,
+.container - lg,
+.container - md,
+.container - sm {
+        --bs - gutter - x: 1.5rem;
+        --bs - gutter - y: 0;
+        width: 100 %;
+        padding - right: calc(var(--bs - gutter - x) * 0.5);
+        padding - left: calc(var(--bs - gutter - x) * 0.5);
+        margin - right: auto;
+        margin - left: auto;
+    }
 
-.pricing-box .plan {
-  font-size: 34px;
-}
-
-.pricing-badge {
-  position: absolute;
-  top: 0;
-  z-index: 999;
-  right: 0;
-  width: 100%;
-  display: block;
-  font-size: 15px;
-  padding: 0;
-  overflow: hidden;
-  height: 100px;
-}
-
-.pricing-badge .badge {
-  float: right;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-  right: -67px;
-  top: 17px;
-  position: relative;
-  text-align: center;
-  width: 200px;
-  font-size: 13px;
-  margin: 0;
-  padding: 7px 10px;
-  font-weight: 500;
-  color: #ffffff;
-  background: #fb7179;
-}
-.mb-2, .my-2 {
-    margin-bottom: .5rem!important;
-}
-p {
-    line-height: 1.7;
-}
+    @media(min - width: 576px) {
+  .container - sm, .container {
+            max - width: 540px;
+        }
+    }
+    @media(min - width: 768px) {
+  .container - md, .container - sm, .container {
+            max - width: 720px;
+        }
+    }
+    @media(min - width: 992px) {
+  .container - lg, .container - md, .container - sm, .container {
+            max - width: 960px;
+        }
+    }
+    @media(min - width: 1200px) {
+  .container - xl, .container - lg, .container - md, .container - sm, .container {
+            max - width: 1140px;
+        }
+    }
+    @media(min - width: 1400px) {
+  .container - xxl, .container - xl, .container - lg, .container - md, .container - sm, .container {
+            max - width: 1320px;
+        }
+    }
+.text - center {
+        text - align: center!important;
+    }
+.text - uppercase {
+        text - transform: uppercase!important;
+    }
+  section#contact.section - heading {
+        color: #fff;
+    }
+  .page - section h2.section - heading, .page - section.section - heading.h2 {
+        font - size: 2.5rem;
+        margin - top: 0;
+        margin - bottom: 1rem;
+    }
+.page - section h3.section - subheading, .page - section.section - subheading.h3 {
+        font - size: 1rem;
+        font - weight: 400;
+        font - style: italic;
+        font - family: "Roboto Slab", -apple - system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans - serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        margin - bottom: 4rem;
+    }
+  .text - muted {
+        --bs - text - opacity: 1;
+        color: #6c757d!important;
+    }
+  .row {
+        --bs - gutter - x: 1.5rem;
+        --bs - gutter - y: 0;
+        display: flex;
+        flex - wrap: wrap;
+        margin - top: calc(-1 * var(--bs - gutter - y));
+        margin - right: calc(-0.5 * var(--bs - gutter - x));
+        margin - left: calc(-0.5 * var(--bs - gutter - x));
+    }
+  .row > * {
+        flex- shrink: 0;
+    width: 100 %;
+    max - width: 100 %;
+    padding - right: calc(var(--bs - gutter - x) * 0.5);
+    padding - left: calc(var(--bs - gutter - x) * 0.5);
+    margin - top: var(--bs - gutter - y);
+  }
+  .col - lg - 4 {
+        flex: 0 0 auto;
+        width: 33.33333333 %;
+    }
+  .team - member {
+        margin - bottom: 3rem;
+        text - align: center;
+    }
+  .team - member img {
+        width: 14rem;
+        height: 14rem;
+        margin - left: 10 %;
+        border: 0.5rem solid rgba(0, 0, 0, 0.1);
+    }
+  .team - member h4, .team - member.h4 {
+        margin - top: 1.5rem;
+        margin - bottom: 0;
+    }
+  .rounded - circle {
+        border - radius: 50 % !important;
+    }
+  .mx - auto {
+        margin-right: auto!important;
+        margin-left: auto!important;
+    }
+  .col - lg - 8 {
+        flex: 0 0 auto;
+        width: 66.66666667 %;
+    }
 </script>{% endblock head %}
 
-{% block body %} 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css" integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />
-
-<section class="section" id="pricing">
+{% block body %}
+<section>
     <div class="container">
-
+        <div class="text-center">
+            <br>
+            <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
+            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+        </div>
         <div class="row">
-            <div class="col-lg-12">
-                <div class="title-box text-center">
-                    <h3 class="title-heading mt-4">Best Pricing Package </h3>
-                    <p class="text-muted f-17 mt-3">All our plans include unlimited support,logins and maintenance.
-                        <br>
-                        With no hidden costs,except for the package  enjoy real transparency!
-                        .</p>
-
-                    <img src="images/home-border.png" height="15" class="mt-3" alt="">
+            <div class="col-lg-4">
+                <div class="team-member">
+                    <br><br><br><br><br>
+                    <img height=180rem class="mx-auto rounded-circle" src={% static "/myapp/images/darshil.jpg" %}
+                        alt="..." />
+                    <h4>Darshil Kumar</h4>
+                    <p class="text-muted">Web & Backend Developer</p>
+                </div>
+                <br>
+            </div>
+            <div class="col-lg-4">
+                <div class="team-member">
+                    <br><br><br><br><br>
+                    <img height=180rem class="mx-auto rounded-circle" src={% static "/myapp/images/ishmeet.jpg" %}
+                        alt="..." />
+                    <h4>Ishmeet Singh Sodhi</h4>
+                    <p class="text-muted">Web Developer</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="team-member">
+                    <br><br><br><br><br>
+                    <img height=180rem class="mx-auto rounded-circle" src={% static "/myapp/images/devansh.jpg" %}
+                        alt="..." />
+                    <h4>Devansh Singh</h4>
+                    <p class="text-muted">Synopsis</p>
                 </div>
             </div>
         </div>
-
-
-        <div class="row mt-5 pt-4">
-            <div class="col-lg-4">
-                <div class="pricing-box mt-4">
-                    <i class="mdi mdi-account h1"></i>
-                    <h4 class="f-20">Standard</h4>
-
-                    <div class="mt-4 pt-2">
-                        <p class="mb-2 f-18">Features</p>
-
-                        <p class="mb-2"><i class="mdi mdi-checkbox-marked-circle text-success f-18 mr-2"></i><b>Unlimited</b>
-                            Successive Bids</p>
-                        <p class="mb-2"><i class="mdi mdi-checkbox-marked-circle text-success f-18 mr-2"></i><b>1</b>
-                            User Account</p>
-                        <p class="mb-2"><i class="mdi mdi-close-circle text-danger f-18 mr-2"></i><b>Upload</b>
-                            Items</p>
-                        <p class="mb-2"><i class="mdi mdi-close-circle text-danger f-18 mr-2"></i><b>Withdraw</b>
-                            Winning Bid
-                        </p>
-                    </div>
-
-                    <p class="mt-4 pt-2 text-muted">Semper urna veal tempus pharetra elit habisse platea dictumst.
-                    </p>
-                    <div class="pricing-plan mt-4 pt-2">
-                        <h4 class="text-muted"><s></s> <span class="plan pl-3 text-dark">Free</span></h4>
-                        <p class="text-muted mb-0">Per Month</p>
-                    </div>
-
-
-                    <div class="mt-4 pt-3">
-                        <a href="" class="btn btn-primary btn-rounded">Purchase Now</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="pricing-box mt-4">
-                    <i class="mdi mdi-account-multiple h1 text-primary"></i>
-                    <h4 class="f-20 text-primary">Starter</h4>
-
-
-                    <div class="mt-4 pt-2">
-                        <p class="mb-2 f-18">Features</p>
-
-                        <p class="mb-2"><i class="mdi mdi-checkbox-marked-circle text-success f-18 mr-2"></i><b>Unlimited</b>
-                            Successive Bids</p>
-                        <p class="mb-2"><i class="mdi mdi-checkbox-marked-circle text-success f-18 mr-2"></i><b>3</b>
-                            User Account</p>
-                        <p class="mb-2"><i class="mdi mdi-checkbox-marked-circle text-success f-18 mr-2"></i><b>Upload</b>
-                            Items</p>
-                        <p class="mb-2"><i class="mdi mdi-close-circle text-danger f-18 mr-2"></i><b>Withdraw</b>
-                            Winning Bid
-                        </p>
-                    </div>
-
-                    <p class="mt-4 pt-2 text-muted">Semper urna veal tempus pharetra elit habisse platea dictumst.
-                    </p>
-
-                    <div class="pricing-plan mt-4 pt-2">
-                        <h4 class="text-muted"><s> ₹ 1500</s> <span class="plan pl-3 text-dark">₹ 1250 </span></h4>
-                        <p class="text-muted mb-0">Per Month</p>
-                    </div>
-
-                    <div class="mt-4 pt-3">
-                        <a href="" class="btn btn-primary btn-rounded">Purchase Now</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="pricing-box mt-4">
-                    <i class="mdi mdi-account-multiple-plus h1"></i>
-                    <h4 class="f-20">Organization</h4>
-
-
-                    <div class="mt-4 pt-2">
-                        <p class="mb-2 f-18">Features</p>
-
-                        <p class="mb-2"><i class="mdi mdi-checkbox-marked-circle text-success f-18 mr-2"></i><b>Unlimited</b>
-                            Successive Bids</p>
-                        <p class="mb-2"><i class="mdi mdi-checkbox-marked-circle text-success f-18 mr-2"></i><b>10</b>
-                            User Account</p>
-                        <p class="mb-2"><i class="mdi mdi-checkbox-marked-circle text-success f-18 mr-2"></i><b>Upload </b>
-                            Items</p>
-                        <p class="mb-2"><i class="mdi mdi-checkbox-marked-circle text-success f-18 mr-2"></i><b>Withdraw</b>
-                            Winning Bid
-                        </p>
-                    </div>
-
-                    <p class="mt-4 pt-2 text-muted">Semper urna veal tempus pharetra elit habisse platea dictumst.
-                    </p>
-
-                    <div class="pricing-plan mt-4 pt-2">
-                        <h4 class="text-muted"><s> ₹ 9000</s> <span class="plan pl-3 text-dark"> ₹ 8000  </span></h4>
-                        <p class="text-muted mb-0">Per Month</p>
-                    </div>
-
-                    <div class="mt-4 pt-3">
-                        <a href="" class="btn btn-primary btn-rounded">Purchase Now</a>
-                    </div>
-                </div>
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque,
+                    laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
             </div>
         </div>
     </div>
 </section>
-{% endblock body %} 
+{% endblock body %}

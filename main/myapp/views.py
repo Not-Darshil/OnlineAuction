@@ -49,9 +49,6 @@ def pricing(request):
 def about(request):
     return render(request,'myapp/homeComponents/about.html')
 
-def about(request):
-    return render(request,'myapp/homeComponents/about.html')
-
 def contact(request):
     return render(request,'myapp/homeComponents/contact.html')
 
