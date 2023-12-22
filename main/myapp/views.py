@@ -46,6 +46,15 @@ def home(request):
 def pricing(request):
     return render(request,'myapp/homeComponents/pricing.html')
 
+def about(request):
+    return render(request,'myapp/homeComponents/about.html')
+
+def about(request):
+    return render(request,'myapp/homeComponents/about.html')
+
+def contact(request):
+    return render(request,'myapp/homeComponents/contact.html')
+
 def homepage(request):
     # return HttpResponse("request")
     return render(request,'myapp/homepage.html')
