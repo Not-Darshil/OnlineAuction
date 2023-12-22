@@ -43,6 +43,9 @@ def activate(request, uidb64, token):
 def home(request):
     return render(request,'myapp/home.html')
 
+def pricing(request):
+    return render(request,'myapp/homeComponents/pricing.html')
+
 def homepage(request):
     # return HttpResponse("request")
     return render(request,'myapp/homepage.html')
