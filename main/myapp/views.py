@@ -98,10 +98,6 @@ def register(request):
         )
 
 
-
-
-
-
 # def register(request):
 #     form = CreateUserForm()
 #     if request.method == 'POST':
@@ -133,12 +129,15 @@ def my_login(request):
     return render(request,'myapp/my_login.html',context=context)
 
 
-def user_logout(request):
-    auth.logout(request)    
-    return redirect("")
+def logout(request):
+    if request.method == 'POST':
+        auth.logout(request)    
+        return redirect ("/my_login")
+    return render(request,'myapp/logout.html')
+    # return redirect("")
 
 
-# @login_required(login_url="my_login") # for protecting the view of dashboard called as csrf protection
+@login_required(login_url="my_login") # for protecting the view of dashboard called as csrf protection
 def dashboard(request):
     return render(request,'myapp/dashboard.html')
 
