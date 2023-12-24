@@ -6,6 +6,9 @@ from django.contrib.auth.models import User
 # for ReCaptchaField
 from django_recaptcha.fields import ReCaptchaField
 from django_recaptcha.widgets import ReCaptchaV2Checkbox
+#for CrearteListingForm
+from .models import Product
+
 
 class FormWithCaptcha(forms.Form):
     captcha = ReCaptchaField()
@@ -35,3 +38,14 @@ class LoginForm(AuthenticationForm):
 
     captcha= ReCaptchaField(widget=ReCaptchaV2Checkbox())
         
+
+
+#create a listing
+class CreateListingForm(forms.ModelForm):
+
+    class Meta:
+        model = Product
+        fields = ['name', 'brand', 'category', 'description', 'start_bid', 'image']
+
+
+

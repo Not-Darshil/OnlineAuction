@@ -2,3 +2,5 @@ django
 django-recaptcha
 pillow
 six
+django-crispy-forms
+crispy-bootstrap5

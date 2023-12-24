@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myapp',##added manually
     'django_recaptcha',##added manually
-    
+    # 'django-crispy-forms',##added manually 
+    "crispy_forms",##added manually 
+    "crispy_bootstrap5", ##added manually   
 ]
 
 MIDDLEWARE = [
@@ -140,3 +142,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 PASSWORD_RESET_TIMEOUT = 14400
+#allowing bootsrap of crispy form
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"

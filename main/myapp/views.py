@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from . forms import UserRegistrationForm, LoginForm
+from . forms import UserRegistrationForm, LoginForm, CreateListingForm
 
 #authentication models and functions
 from django.contrib.auth.models import auth
@@ -16,8 +16,11 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from django.core.mail import EmailMessage
-
 from .tokens import account_activation_token
+
+from .models import Product
+
+
 
 # Create your views here.
 
@@ -139,6 +142,43 @@ def logout(request):
 
 @login_required(login_url="my_login") # for protecting the view of dashboard called as csrf protection
 def dashboard(request):
-    return render(request,'myapp/dashboard.html')
+    products = Product.objects.all() 
+    return render(request,'myapp/dashboard.html', {
+        'object': products},)
+
+# @login_required(login_url="my_login")
+# def create(request):
+
+#     form=CreateListingForm()
+
+#     if request.method=="POST":
+
+#         if form.is_valid():
+
+#             form.save()
+
+#             return redirect("/dashboard")
+        
+#         context={'form':form}
+
+#     return render(request,'myapp/mainComponents/create.html',{'form':form})
 
 
+@login_required(login_url="my_login")
+def create(request):
+    if request.method == "POST":
+        form = CreateListingForm(request.POST, request.FILES)
+        if form.is_valid():
+            new_product = form.save(commit=False)
+            # Optionally, you can associate the product with the current user
+            new_product.lister = request.user
+            # new_product.user = request.user
+            new_product.save()
+            messages.success(request, 'Product created successfully.')
+            return redirect("/dashboard")
+        else:
+            messages.error(request, 'Error creating the product. Please check the form data.')
+    else:
+        form = CreateListingForm()
+
+    return render(request, 'myapp/mainComponents/create.html', {'form': form})
