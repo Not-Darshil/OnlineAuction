@@ -6,21 +6,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>my_login</title>
-    <link rel="stylesheet" href="{% static 'myapp/homeComponents/css/my_login.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp/userComponents/css/my_login.css' %}">
+    {% comment %} <link rel="stylesheet" href="{% static 'myapp/homeComponents/css/my_login.css' %}"> {% endcomment %}
     
 </head>
 <body>
-
-    {% if not request.user.is_authenticated %}
-        <form method="post" autocomplete="off">
-            {% csrf_token %}
-            
-            {{loginform.as_p}}
-            <input type="submit" value="Login" />
-        </form>
-    {% else %}
-        <p>You're already logged in. Would you like to <a href="/logout">Log Out </a>? or view<a href="/dashboard">Dashboard </a></p>
-    {% endif %}
-    
+    <div class="mainbox">
+        <div id="subbox">
+        <h1 id="heading">Login Form</h1><br>
+        {% if not request.user.is_authenticated %}
+            <form method="post" autocomplete="off">
+                {% csrf_token %}
+                
+                {{loginform.as_p}}
+                <input type="submit" value="Login" />
+            </form>
+            <h3>Don't have an account? <a href="/register">Register</a> </h3>
+        {% else %}
+            <p>You're already logged in. Would you like to <a href="#">Log Out </a>? or view<a href="/dashboard">Dashboard </a></p>
+        {% endif %}
+        </div>
+    </div>
 </body>
 </html>
