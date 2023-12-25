@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django_recaptcha.fields import ReCaptchaField
 from django_recaptcha.widgets import ReCaptchaV2Checkbox
 #for CrearteListingForm
-from .models import Product
+from .models import Product, Bidding, Comment #,Category
 
 
 class FormWithCaptcha(forms.Form):
@@ -40,12 +40,43 @@ class LoginForm(AuthenticationForm):
         
 
 
+
+
+
 #create a listing
 class CreateListingForm(forms.ModelForm):
-
+    # CATEGORY_CHOICES = [(category.name, category.name) for category in Category.objects.all()]
+    # category = forms.ChoiceField(choices=CATEGORY_CHOICES)
     class Meta:
         model = Product
-        fields = ['name', 'brand', 'category', 'description', 'start_bid', 'image']
+        labels = {
+            'name' : 'Name',
+            'description' : 'Description',
+            'startingbid' : 'Starting Bid',
+            'images' : 'Image',
+            # 'category' : 'Category'
+        }
+        fields = ['name', 'brand','description', 'start_bid', 'image'] 
 
+
+class BiddingForm(forms.ModelForm):
+    class  Meta:
+        model = Bidding
+        labels = {
+            'bidprice' : ''
+        }
+        fields = [
+            'bidprice'
+        ]
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        labels = {
+            'comment' : ''
+        }
+        fields = [
+            'comment'
+        ]
 
 

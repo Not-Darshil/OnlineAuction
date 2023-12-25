@@ -14,7 +14,18 @@
       {% for object in object %}
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
+            {% if object.images %}
+              <a href="{% url 'listingpage' object.id %}">
+                  <img  class="card-img-top" style="width: 100%; height: 15rem" src="{{ object.images.url }}" alt="{{ object.name }}">
+              </a>
+            {% else %}
+              <a href="{% url 'listingpage' object.id %}" >
+                  <img class="card-img-top" style="width: 100%; height: 15rem;" src="https://i.ibb.co/T8nxLQT/No-Image-Available.png" alt="No-Image" >
+              </a>
+            {% endif %} 
+
             <img src="{{ object.image.url }}" class="card-img-top" alt="{{ object.name }}" style="width: 100; height: 15rem;">
+            
             <div class="card-body">
               <h5 class="card-title">{{ object.name }}</h5>
               <p class="card-text">{{ object.category }}</p>
