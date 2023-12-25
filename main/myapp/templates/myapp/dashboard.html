@@ -3,45 +3,43 @@
 {% block title %}Dashboard {% endblock title %}
 {% block head %}
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 {% endblock head %}
 
 {% block body %}
-    <link rel="stylesheet" href="{% static "myapp/mainComponents/css/dashboard.css" %}" >
-    <div class="container">
-        <div class="row">
-            {% for object in object %}
-                <div class="col-md-3">
-                    <div class="ibox">
-                        <div class="ibox-content product-box">
-                            {% comment %} <div class="product-imitation">
-                                [ INFO ]
-                            </div> {% endcomment %}
-                            <div class="col-md-3 mt-1">
-                                <img class="img-fluid img-responsive rounded product-image" src="{{ object.image.url }}">
-                            </div>
-                            <div class="product-desc">
-                                <span class="product-price">
-                                    {{ object.start_bid}}
-                                </span>
-                                <small class="text-muted">{{ object.category }}</small>
-                                <a href="#" class="product-name">{{ object.name }}</a>
-            
-                                <div class="small m-t-xs">
-                                    {{ object.description }}
-                                </div>
-                                <div class="m-t text-righ">
-                                    <a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+  
+<div class="container">
+    <div class="row">
+      {% for object in object %}
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img src="{{ object.image.url }}" class="card-img-top" alt="{{ object.name }}" style="width: 100; height: 15rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{ object.name }}</h5>
+              <p class="card-text">{{ object.category }}</p>
+              <p class="card-text">{{ object.description }}</p>
+              <p class="card-text">Start Bid: ${{ object.start_bid }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <!-- Add a link to the product detail page or any other action you prefer -->
+                  <a href="#" class="btn btn-sm btn-outline-secondary">View Details</a>
                 </div>
-            
-            {% endfor %}
+                <small class="text-muted">Listed by: {{ object.lister.username }}</small>
+              </div>
+            </div>
+            <div class="card-footer text-center">
+              <a href="#" class="btn btn-primary">Checkout</a>
+            </div>
+          </div>
         </div>
+      {% endfor %}
     </div>
+  </div>
 
-{% endblock body %}
+
+
+      {% endblock body %}
 
 
 
