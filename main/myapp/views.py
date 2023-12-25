@@ -55,6 +55,11 @@ def about(request):
 def contact(request):
     return render(request,'myapp/homeComponents/contact.html')
 
+def listings(request):
+    products = Product.objects.all() 
+    return render(request,'myapp/homeComponents/listings.html', {
+        'object': products},)
+
 def homepage(request):
     # return HttpResponse("request")
     return render(request,'myapp/homepage.html')
