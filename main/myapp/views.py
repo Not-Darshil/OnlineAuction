@@ -42,12 +42,29 @@ def activate(request, uidb64, token):
         user.save()
 
         messages.success(request, 'Thank you for your email confirmation. Now you can login your account.')
-        return redirect('login')
+        return redirect('/my_login')
     else:
         messages.error(request, 'Activation link is invalid!')
     
-    return redirect('my_login')
+    return redirect('/my_login')
 
+
+def activateEmail(request, user, to_email,login_url):
+    mail_subject = 'Activate your user account.'
+    message = render_to_string('template_activate_account.html', {
+        'user': user.username,
+        'domain': get_current_site(request).domain,
+        'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+        'token': account_activation_token.make_token(user),
+        'protocol': 'https' if request.is_secure() else 'http',
+        'login_url': login_url
+    })
+    email = EmailMessage(mail_subject, message, to=[to_email])
+    if email.send():
+        messages.success(request, f'Dear <b>{user}</b>, please go to you email <b>{to_email}</b> inbox and click on \
+            received activation link to confirm and complete the registration. <b>Note:</b> Check your spam folder.')
+    else:
+        messages.error(request, f'Problem sending confirmation email to {to_email}, check if you typed it correctly.')
 
 
 def home(request):
@@ -73,23 +90,34 @@ def homepage(request):
 
 
 
-def activateEmail(request, user, to_email):
-    mail_subject = 'Activate your user account.'
-    message = render_to_string('template_activate_account.html', {
-        'user': user.username,
-        'domain': get_current_site(request).domain,
-        'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-        'token': account_activation_token.make_token(user),
-        'protocol': 'https' if request.is_secure() else 'http'
-    })
-    email = EmailMessage(mail_subject, message, to=[to_email])
-    if email.send():
-        messages.success(request, f'Dear <b>{user}</b>, please go to you email <b>{to_email}</b> inbox and click on \
-            received activation link to confirm and complete the registration. <b>Note:</b> Check your spam folder.')
-    else:
-        messages.error(request, f'Problem sending confirmation email to {to_email}, check if you typed it correctly.')
-
 @user_not_authenticated 
+# def register(request):
+#     if request.method == "POST":
+#         form = UserRegistrationForm(request.POST)
+#         if form.is_valid():
+#             user = form.save(commit=False)
+#             user.is_active = False
+#             user.save()
+#             activateEmail(request, user, form.cleaned_data.get('email'))
+
+#             return redirect('my_login')
+
+#         else:
+#             for error in list(form.errors.values()):
+#                 messages.error(request, error)
+
+#     else:
+#         form = UserRegistrationForm()
+
+#     return render(
+#         request=request,
+#         template_name="myapp/register.html",
+#         # template_name="users/register.html",
+#         context={"UserRegistrationForm": form}
+#         )
+
+
+
 def register(request):
     if request.method == "POST":
         form = UserRegistrationForm(request.POST)
@@ -97,8 +125,14 @@ def register(request):
             user = form.save(commit=False)
             user.is_active = False
             user.save()
-            activateEmail(request, user, form.cleaned_data.get('email'))
-            return redirect('my_login')
+
+            # Use the reverse function to get the URL for 'my_login'
+            my_login_url = reverse('my_login')
+            activateEmail(request, user, form.cleaned_data.get('email'),my_login_url)
+
+            messages.success(request, 'Account created successfully. Please check your email for activation instructions.')
+
+            return redirect('/checkmail')
 
         else:
             for error in list(form.errors.values()):
@@ -109,10 +143,12 @@ def register(request):
 
     return render(
         request=request,
-        template_name="myapp/register.html",
-        # template_name="users/register.html",
+        template_name="myapp/register.html",  # Update with your correct template path
         context={"UserRegistrationForm": form}
-        )
+    )
+
+def checkmail(request):
+    return render(request,'myapp/checkmail.html')
 
 def my_login(request):
     form=LoginForm()

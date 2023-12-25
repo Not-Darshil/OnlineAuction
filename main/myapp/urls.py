@@ -12,6 +12,7 @@ urlpatterns = [
     path('listings',views.listings,name='listings'),
     #User Components
     path('register',views.register,name='register'),
+    path('checkmail',views.checkmail,name='checkmail'),
     path('my_login',views.my_login,name='my_login'),
     path('logout',views.logout,name='logout'),
     path('logout/', LogoutView.as_view(), name='logout'),
