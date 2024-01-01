@@ -201,7 +201,7 @@ def create(request):
             new_product.save()
             messages.success(request, 'Product created successfully.')
             # return redirect("/dashboard")
-        return HttpResponseRedirect(reverse('/dashboard'))
+        return HttpResponseRedirect(reverse('dashboard'))
     else:
             return render(request, 'myapp/mainComponents/create.html', {
                 'form': form,
@@ -221,7 +221,7 @@ def listingpage(request,id):
         cform = CommentForm(request.POST or None)
         bidform = BiddingForm(request.POST or None)
     except:
-        return redirect('/dashboard')
+        return redirect('dashboard')
     if request.user.username:
 
         try:

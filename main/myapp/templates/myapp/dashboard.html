@@ -14,9 +14,9 @@
       {% for object in object %}
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-            {% if object.images %}
+            {% if object.image %}
               <a href="{% url 'listingpage' object.id %}">
-                  <img  class="card-img-top" style="width: 100%; height: 15rem" src="{{ object.images.url }}" alt="{{ object.name }}">
+                  <img  class="card-img-top" style="width: 100%; height: 15rem" src="{{ object.image }}" alt="{{ object.name }}">
               </a>
             {% else %}
               <a href="{% url 'listingpage' object.id %}" >
@@ -24,13 +24,13 @@
               </a>
             {% endif %} 
 
-            <img src="{{ object.image.url }}" class="card-img-top" alt="{{ object.name }}" style="width: 100; height: 15rem;">
+            <!-- <img src="{{ object.image.url }}" class="card-img-top" alt="{{ object.name }}" style="width: 100; height: 15rem;"> -->
             
             <div class="card-body">
               <h5 class="card-title">{{ object.name }}</h5>
               <p class="card-text">{{ object.category }}</p>
               <p class="card-text">{{ object.description }}</p>
-              <p class="card-text">Start Bid: ${{ object.start_bid }}</p>
+              <p class="card-text">Start Bid: Rs.{{ object.start_bid }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <!-- Add a link to the product detail page or any other action you prefer -->
