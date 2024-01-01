@@ -216,6 +216,7 @@ def create(request):
 @login_required(login_url="my_login")
 def listingpage(request,id):
     listing = Product.objects.get(id=id)
+    print(listing.image)
     comment = Comment.objects.filter(listingid=id)
     try:
         cform = CommentForm(request.POST or None)
@@ -339,7 +340,7 @@ def watchlist(request):
 
 
 
-@login_required
+@login_required(login_url="my_login")
 def bid(request, listingid):
     current = Product.objects.get(id=listingid)
     current = current.start_bid
@@ -375,7 +376,7 @@ def bid(request, listingid):
         
 
 
-@login_required
+@login_required(login_url="my_login")
 def closebid(request, listingid):
     if request.user.username:
         try:
@@ -443,7 +444,7 @@ def closebid(request, listingid):
     else:
         return redirect('/dashboard')
 
-@login_required
+@login_required(login_url="my_login")
 def closed(request, listingid):
     closed = Closebid.objects.get(listingid=listingid)
     try:
@@ -463,7 +464,7 @@ def closed(request, listingid):
 
 
 
-@login_required
+@login_required(login_url="my_login")
 def comment(request, listingid):
     if request.method == "POST":
         comment = Comment.objects.all()
