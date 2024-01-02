@@ -29,7 +29,7 @@ urlpatterns = [
     path("listing/<int:listingid>/bid",views.bid,name="bid"),
     path("listing/<int:listingid>/closebid",views.closebid,name="closebid"),
     path("watchlist", views.watchlist, name="watchlist"),
-    path("listing/<int:listingid>/closed", views.closed, name="closed"),
+    path("listing/<int:listingid>/closed", views.closed, name='closed'),
     #FOR extra features
     path("comment/<int:listingid>", views.comment, name="comment"),
     # path("category", views.category, name="category"),
@@ -42,3 +42,5 @@ urlpatterns = [
 
 
 ]
+
+

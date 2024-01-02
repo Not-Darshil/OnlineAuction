@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponseBadRequest
 from django.urls import reverse
 from django.db import IntegrityError
@@ -216,7 +216,13 @@ def create(request):
 @login_required(login_url="my_login")
 def listingpage(request,id):
     listing = Product.objects.get(id=id)
+    print(listing.name)
     print(listing.image)
+    print(listing.brand)
+    print(listing.description)
+    print(listing.start_bid)
+    print(listing.lister)
+    print(request.user.username)
     comment = Comment.objects.filter(listingid=id)
     try:
         cform = CommentForm(request.POST or None)

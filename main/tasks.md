@@ -1,8 +1,8 @@
 #BASIC AND MAIN TASK:
-1.Creating Models  
-1.added into urls.py
-1.make html files of listing page
-1.close bidsand watchlist,image are not working
+1.~~Creating Models~~  
+1.~~added into urls.py~~
+1.~~make html files of listing page~~
+1.~~close bids~~ and watchlist,image are not working
 1.and add watchlist,bids
 
 

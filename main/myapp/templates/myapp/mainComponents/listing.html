@@ -162,13 +162,14 @@
               {% endif %} 
       
       <!-- CLOSE BID-->
-          <br />
-              {% if user.username %}
-                {% if lister %}
-                    <a href="{% url 'closebid' object.id %}"><button class="btn btn-primary btn-lg btn-primary btn-block text-uppercase" style="color: white; font-size: 80%; border-radius: 5rem; letter-spacing: .1rem; font-weight: bold;padding: 1rem;transition: all 0.2s;">
-                        Close Bid</button></a>
-                {% endif %}
-              {% endif %}
+      
+      <br />
+      {% if object.lister|stringformat:"s" == user.username|stringformat:"s" %}
+        <a href="{% url 'closebid' object.id %}">
+          <button class="btn btn-primary btn-lg btn-primary btn-block text-uppercase" style="color: white; font-size: 80%; border-radius: 5rem; letter-spacing: .1rem; font-weight: bold;padding: 1rem;transition: all 0.2s;">
+          Close Bid</button></a>
+      {% endif %}    
+      
         </div>
       </div>
 </div>  
